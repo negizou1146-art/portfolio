@@ -1,0 +1,594 @@
+
+/*
+Theme Name: Yamanoi Portfolio
+Author: Tsutomu Yamanoi
+Version: 1.0
+*/
+
+@charset "utf-8";
+
+:root {
+  --primary-color: #78ccea95; /* メインカラー */
+  --text-color: #254f57; /* テキストカラー */
+  --secondary-color: #ddffdd; /* テキストカラーその２ */
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic Pron", Meiryo, sans-serif;
+    background: var(--text-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* ヘッダー */
+#site-header {
+    width: 200px;
+}
+
+#site-logo {
+    padding: 20px 0;
+    text-align: center;
+}
+#site-logo img {
+    width: 120px;
+}
+
+/* FVの画面 */
+.fv {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    z-index: -1;
+}
+.fv2 {
+    position: relative;
+    height: 20vh;
+}
+
+/* FV背景の文字 */
+.fv-text {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text1 {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 40px;
+    font-weight: 300;
+    transform: translateY(120px);
+}
+
+/* ナビ共通 */
+
+.center-nav ul {
+    display: flex;
+    padding: 20px;
+    background: var(--primary-color);
+    backdrop-filter: blur(10px);
+    border-radius: 999px;
+    list-style: none;
+}
+.center-nav li {
+    width: 120px;
+    height: 85px;
+}
+.center-nav a {
+    display: flex;
+    width: 115px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.90rem;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+}
+.center-nav img {
+    width: 50px;
+    aspect-ratio: 1/1;
+}
+
+.center-nav {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.4s ease, transform 0.4s cubic-bezier(.9,.9,.7,.7);
+    z-index: 900;
+}
+.button:active {
+  transform: translateY(5px) scale(0.7);
+}
+/* スクロールすると上部にはりつくナビボタン。JSでつけ外しする。 */
+.center-nav.is-fixed-top {
+    top: -45px;
+    transform: translate(-50%, 0) scale(0.5);
+}
+
+
+/* ページトップに移動するやつ */
+.page_top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 100;
+}
+.page_top span::after {
+    content: 'Scroll';
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+.page_top :hover {
+    transform: scale(1.2);
+}
+
+.page_top a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--primary-color);
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+
+    /* 下へのスクロールを促すやつ */
+    /* 動く矢印の先端 */
+.page_top a::before {
+    content: "";
+    /* 矢の位置 */
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    /* 形状 */
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+    transform: translateX(-50%) rotate(45deg);
+}
+.page_top a::before {
+    animation: none;
+}
+
+.page_top:hover a::before {
+    animation: arrowHead 1.6s ease-in-out infinite;
+}
+
+@keyframes arrowHead {
+    0%, 40% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+    /* スクロールで上向きに変える */
+.page_top.is-up a::before {
+    transform: translateX(-50%) translateY(-60%) rotate(-135deg);
+}
+.page_top.is-up span::after {
+    content: "TOP";
+    top: 40%;
+    left: 27%;
+}
+
+/* ここまでページトップボタン */
+
+
+/* ハンバーガー */
+#menu-button {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 15%;
+    width: 30px;
+    margin: 20px auto;
+    cursor: pointer;
+    z-index: 1000;
+}
+#menu-button span {
+    display: block;
+    height: 2px;
+    background: var(--secondary-color);
+    margin: 6px 0;
+    transition: .4s;
+}
+
+/* バーガー開いた状態 *//* nth-childは、上から数えて何番目の要素に適用するかを指定する */
+#menu-button.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+#menu-button.open span:nth-child(2) {
+    opacity: 0;
+}
+#menu-button.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* スライドショー（CSSのみ） */
+#mainimg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: slideshow 15s infinite;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.slide1 {
+    background-image: url(images/bi01.png);
+    animation-delay: 0s;
+}
+.slide2 {
+    background-image: url(images/bi02.png);
+    animation-delay: 5s;
+}
+.slide3 {
+    background-image: url(images/bi03.png);
+    animation-delay: 10s;
+}
+
+@keyframes slideshow {
+    0% { opacity: 0; transform: scale(1);}
+    10% { opacity: 1; transform: scale(1.1);}
+    33% { opacity: 1;}
+    43% { opacity: 0;}
+    100% {opacity: 0;}
+}
+
+
+/* お知らせ部分 */
+@media(min-width:700px) {
+    .nav-top {
+        position: absolute;
+        left: 180px;
+        bottom: 40px;
+        width: calc(100% - 400px);/* calc計算は計算記号の前後に半角スペースをあけて記述 */
+        border-radius: 100px;
+        display: flex;
+        background: var(--primary-color);
+        padding: 0 1rem;
+    }
+    .nav-top .text {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .nav-top .more a {
+        background: #1188dd;
+        color: var(--secondary-color);
+        padding: 0 1rem;
+        border-radius: 100px;
+        text-decoration: none;
+    }
+}
+/* お知らせここまで */
+
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* コンテンツここから */
+.con-con {
+    width: calc(100% - 120px);
+    margin: 0 auto;
+    text-align: center;
+}
+.con-header {
+    font-weight: bold;
+    align-content: center;
+    padding: 0px 10px 20px;
+}
+h2 {
+    font-size: 2rem;
+    margin: 2rem;
+}
+h3 {
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+/* コンテンツエリアの重なり表現 */
+.content {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 40px 40px 0 0;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, .15);
+}
+.content + .content {
+    margin-top: 0;
+    border-radius: 0;
+}
+
+
+.prof img {
+    display: block;
+    width: 50%;
+    justify-self: center;
+}
+
+
+.c-3 {
+    margin-bottom: 400px;
+}
+
+
+.work-area {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+    align-items: center;
+    border: 6px double var(--primary-color);
+    padding: 20px 0;
+}
+
+/* 横スクロールするコンテンツエリア */
+.works-slider {
+    overflow: hidden;
+    position: relative;
+    border: 6px double var(--primary-color);
+}
+
+.work-area2 {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.w-wrap {
+    flex: 0 0 100%;/* ← これが肝 */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+    /* サムネイル */
+.works-slider {
+    scroll-snap-type: mandatory;
+}
+.thumb-loop {
+    width: calc(100% - 600px);
+    margin: 10px auto;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+}
+.thumb-loop::after {
+    content: "サムネイルをクリックで表示位置までスクロールします。";
+    font-size: 0.7em;
+}
+.thumb-track {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    will-change: transform;
+    padding: 10px;
+    border: 2px double var(--primary-color);
+}
+
+.thumb-track img {
+    width: 40px;
+    flex-shrink: 0;
+}
+
+.thumb-track img.active {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+/* 横スクロールここまで */
+
+/* 作品集へのリンクロゴ */
+.work-logo img {
+    width: 30%;
+}
+
+.work-logo2 img {
+    width: 60%;
+}
+.work-logo:hover, .work-logo2:hover {
+    transform: rotateY( 1turn);
+    transition: all 0.9s;
+}
+.up::before {
+    font-family: "Font Awesome 6 Free";
+    content: '\f102';
+    font-weight: 900;
+}
+
+/* 作品集のWEBページ画像 */
+.w-1 {
+    max-height: 500px;
+    overflow: auto;
+    border: 1px solid var(--text-color);
+    justify-self: center;
+    aspect-ratio: 1/1.618;
+}
+.w-1 img {
+    width: 100%;
+    display: block;
+}
+.w-2 {
+    max-height: 300px;
+    max-width: 400px;
+    overflow: auto;
+    justify-self: center;
+}
+.w-2 img {
+    width: 100%;
+    display: block;
+}
+.p-1 {
+    padding: 20px 40px;
+}
+
+/* SPスマートフォン時だけ */
+@media(max-width: 900px) {
+
+    #menu-button {
+        display: block;
+    }
+    .nav-top {
+        text-align: center;
+    }
+
+    #site-nav {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--primary-color);
+    }
+
+    #site-nav ul {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 20px;
+    }
+    .content {
+        padding: 0;
+    }
+    .work-area {
+        display: block;
+    }
+    .work-area2 {
+        display: block;
+    }
+    .w-wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .thumb-loop {
+        display: none;
+    }
+}
+
+
+/* フッター */
+footer small {
+    position: fixed;
+    right: 5px;
+    bottom: 90px;
+    writing-mode: vertical-lr;
+    opacity: .7;
+    color: var(--text-color);
+}
+
+/* SNS */
+.icons {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    list-style: none;
+}
+.icons img {
+    width: 20px;
+}
+
+
+/* フォントオーサムのアイコン */
+.ic-1::before {
+    font-family: "Font Awesome 6 Free";
+    content: '\f6fc';
+    font-weight: 900;
+}
+.ic-2::before {
+    font-family: "Font Awesome 6 Free";
+    content: '\f007';
+    font-weight: 900;
+}
+.ic-3::before {
+    font-family: "Font Awesome 6 Free";
+    content: '\f1c5';
+    font-weight: 900;
+}
+.ic-4::before {
+    font-family: "Font Awesome 6 Free";
+    content: '\e4e8';
+    font-weight: 900;
+}
+
+/* ページ内リンク移動時の位置調整 */
+.jump{
+    padding-top: 50px;
+}
+
+
+/* ワードプレスで使用する、お問い合わせフォーム用 */
+.wpforms-submit-container {
+    text-align: center;
+}
+
+.wpforms-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wpforms-field input,
+.wpforms-field textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--text-color);
+    font-size: 1rem;
+}
+
+.wpforms-submit {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 999px;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.wpforms-form {
+    background: rgba(255,255,255,0.7);
+    padding: 30px;
+    border-radius: 30px;
+    border: 3px double var(--primary-color);
+}
+
+#wpforms-32 .wpforms-field input,
+#wpforms-32 .wpforms-field textarea {
+    width: 80% !important;
+    display: block;
+    margin: 10px auto;
+    border-radius: 20px;
+}
+/* ここまでお問い合わせフォーム */

@@ -1,0 +1,377 @@
+@charset "utf-8";
+
+html {
+    scroll-behavior: smooth; /* スムーズスクロールを有効にする */
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: #00b050;
+}
+nav ul {
+    display: flex;
+}
+
+/* ナビボタン画像サイズ */
+nav ul img{
+    width: 180px;
+}
+
+/* ロゴ画像 */
+.nav-logo {
+    width: 120px;
+    padding: 0 20px;
+}
+.nav-logo img{
+    width: 120px;
+    height: 90px;
+}
+/* SNSアイコン画像 */
+nav .nav img {
+    width: 30px;
+    margin-left: 0px;
+}
+
+/* ナビボタンをマウスオンで拡大表示 */
+.nav-btn img {
+    transition: 0.2s ease;
+}
+.nav-btn:hover img {
+    transform: scale(1.3);
+}
+
+/* その他リンクをマウスオンで拡大表示 */
+.link-btn {
+    display: inline-block;
+    transition: 0.2s ease;
+}
+.link-btn:hover {
+    transform: scale(1.4);
+}
+
+main .back {
+    background-image: url(../images/02-Cafe-img/haikei2.png);/*商品メニューの背景*/
+    background-position: center 0 ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+body .gnav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    z-index: 100;
+}
+nav li {
+    margin-right: 20px;
+    margin-top: 10px;
+    list-style: none;
+}
+nav .nav {
+    margin-right: 13px;
+}
+
+/* お問い合わせ＆会社案内 */
+body .nav-side {
+    display: flex;
+    width: 150px;
+    margin-top: 5px;
+    font-size: 13px;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+body .nav-side img{
+    width: 40px;
+}
+
+header {
+    text-align: center;
+}
+header .shopicon {
+    width: 200px;
+    height: 160px;
+    padding: 20px;
+}
+header .text1 {
+    font-size: 16px;
+    line-height: 1.8;
+}
+header .dnimg img {
+    width: 100%;
+    background-size: cover;
+    padding-top: 0px;
+}
+
+header .onlineshop-link{
+    margin: 40px;
+}
+header .onlineshop {
+    color: #00b050;
+    text-decoration: none;
+    font-size: 24px;
+}
+.onlineshop img{
+    width: 50px;
+}
+
+/* メニューピックアップ */
+main .pickup {
+    margin-bottom: 50px;
+}
+main .pickup img{
+    width: 500px;
+}
+
+main #menu {
+    margin-left: 25px;
+}
+main .list {
+    width: 1000px;
+    margin: 0 auto;
+}
+/* メニュー内の画像 */
+.drink img {
+    width: 200px;
+}
+.curry img {
+    width: 400px;
+}
+.dessert img {
+    width: 300px;
+}
+.name {
+    padding-top: 10px;
+}
+.name img {
+    width: 500px;
+}
+/* メニュー内のテキスト */
+.kakoi {
+    position: relative;
+    width: 350px;
+    border: 1px solid #00b0d080;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    padding: 20px;
+    line-height: 1.5;
+    font-size: 16px;
+    background: linear-gradient( 178deg, #11dd55 -5%, #ffffff 5%, #ffffff 91%, #11dd55 100%);
+}
+.kakoi img {
+    position: absolute;
+    right: -30px;
+    bottom: -30px;
+    width: 25%;
+}
+main .text2 {
+    margin-bottom: 10px;
+}
+.text2-h {
+    font-size: 20px;
+    margin-bottom: 1em;
+}
+
+main .onlineshop a {
+    color: #00b050;
+    font-size: 24px;
+    text-decoration: none;
+}
+main .onlineshop {
+    padding: 10px;
+    margin-bottom: 100px;
+}
+main {
+    text-align: center;
+}
+main .shop {
+    background-color: #0a0605;
+}
+main .shop ul {
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+}
+main .shop li {
+    width: 300px;
+    font-size: 13px;
+    text-align: left;
+    list-style-type: none;
+}
+main .bgimg1 {
+    height: 700px;
+    background-image: url(../images/02-Cafe-img/curry1-3.png);/*ページの背景画像*/
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main .tempo {
+    width: 300px;
+    margin-right: 50px;
+    text-align: center;
+    padding: 0;
+    line-height: 1.6;
+}
+main .tempo2 {
+    width: 300px;
+    height: 200px;
+}
+main .tempo2 img {
+    width: 80px;
+}
+
+main .miel {
+    float: right;
+    width: 75px;
+    height: 75px;
+}
+
+main .map {
+    position: relative;
+}
+main .map iframe {
+    width: 100%;
+}
+main .map img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -80px;
+    margin-top: -200px;
+}
+main .group {
+    padding: 110px 0 70px 0;
+}
+main .tempo:last-child {
+    margin-right: 0px;
+}
+main .naiyou {
+    width: 100%;
+    height: 100px;
+    margin: 20px 0 0 0;
+    line-height: 1.5;
+    border-bottom: 1px solid #a9a9a9;
+    color: #999999;
+}
+MAIN .LINK {
+    padding: 10PX 0 0 0;
+    color: #ffffff;
+}
+footer .icon {
+    list-style-type: none;
+    margin: 20px 0 20px 0;
+}
+footer .icon img {
+    width: 50px;
+}
+
+footer {
+    background-image: url(../images/02-Cafe-img/footer.png);/*フッターの右下に表示する画像*/
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-color: #0a0605;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.bannar {
+    width: 100%;
+    padding: 30px 0 30px 0;
+    border-bottom: 1px solid #ffffff;
+}
+.bannar li {
+    padding: 10px;
+}
+.bannar img {
+    width: 728px;
+    height: 90px;
+}
+footer .icon {
+    display: flex;
+    justify-content: space-around;
+}
+footer .backnumber {
+    display: flex;
+    margin-right: auto;
+    text-align: center;
+    justify-content: center;
+}
+footer .opelation {
+    width: 100px;
+    height: 100px;
+}
+footer .opelation img {
+    width: 100px;
+}
+
+footer .option {
+    width: 1000px;
+    margin:  0 auto;
+}
+footer .tab {
+    text-align: left;
+    padding: 0 0 0 10px;
+    margin: 0 0 0 20px;
+    color: #f27611;
+    height: 80px;
+    border-left: 1px solid #ffffff;
+}
+footer .tab li {
+    list-style: none;
+}
+footer .tab a {
+    color: #ffffff;
+    text-decoration: none;
+}
+footer .copy {
+    text-align: center;
+    color: #ffffff;
+    padding-bottom: 20px;
+}
+footer .open {
+    color: aliceblue;
+    font-size: 16px;
+    text-align: center;
+    padding: 60px;
+    line-height: 2;
+    border-bottom: 1px solid #ffffff;
+}
+.open h3 {
+    font-size: 24px;
+}
+.open-span {
+    font-size: 14px;
+}
+
+.jump{
+    display: block;
+    padding-top: 100px;
+    margin-top: -100px;
+}
+
+.kakoi {
+  animation: zoomIn forwards ;
+  animation-timeline: view(70% 0%);
+}
+
+@keyframes zoomIn {
+  from { 
+    transform: scale(0);
+    opacity: 0;
+  }
+  to { 
+    transform: scale(1);
+    opacity: 1; 
+  }
+}

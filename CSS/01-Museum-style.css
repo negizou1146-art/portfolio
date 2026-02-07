@@ -1,0 +1,550 @@
+@charset "utf-8";
+/* CSS Document */
+
+*,
+::before,
+::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.first-view {
+    height: calc(100vh - 50px);
+    background-image: url("../images/01-Mus-img/top.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+
+.first-view-text {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 80px;
+    color: #f8fcff;
+    font-weight: bold;
+    text-shadow: 1px 1px 10px #4d2c14;
+}
+
+.first-view-text h1 {
+    font-family: 'マメロン 5 Hi Regular';
+    font-size: 56px;
+    line-height:72px;
+}
+
+.first-view-text p {
+    font-size: 18px;
+    margin-top: 20px;
+    font-family: 'マメロン 5 Hi Regular';
+}
+
+.lead {
+    max-width:1200px;
+    margin: 50px auto;
+}
+.lead-text {
+    background-color: #3a086180;
+    color: #FFF;
+    line-height: 2;
+    text-align: center;
+    padding: 40px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-family: 'マメロン 5 Hi Reguler';
+    font-size: 18px;
+}
+
+.lead-text2 {
+    background-image: url(../images/01-Mus-img/51.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    z-index: 10;
+    text-align: center;
+    line-height: 2;
+    color: #FFF;
+    font-size: 22px;
+}
+
+/* ここから横並び画像の下付きテキスト */
+
+.image-row {
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    gap: 10px; /* 画像間の隙間 */
+    margin-top: 20px;
+}
+
+.img-con {
+    width: 25%;
+    text-align: center;
+}
+
+.img-con img {
+    width: 100%;
+    padding: 5px;
+    border-radius: 20px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.img-con p {
+    padding: 10px 0 0 0;
+    font-size: 20px;
+}
+/* ここまで横並び画像の下付きテキスト */
+
+/* ここから二段組み画像テキスト */
+.content-align {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+.concept-pic {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    height: 240px;
+    width: 1200px;
+    margin: 100px auto;
+    max-width: 1600px; /*最大値*/
+    max-height: 1600px; /*最大値*/
+    /*min-width: 500; /*最小値*/
+    /*min-height: 500px; /*最小値*/
+    color: #FFF;
+}
+.concept-pic img {
+    padding: 5px;
+    border-radius: 20px;
+    width: 600px;
+    height: 400px;
+}
+
+.concept-h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.con-p {
+    font-size: 16px;
+}
+.document-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.doc-con2 {
+    margin-bottom: 10px;
+}
+.doc-con3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 2;
+    width: 600px;
+    height: 350px;
+    border: 10px double #0f4d2e;
+    background: linear-gradient(#33c971,#010e07);
+    padding: 70px;
+}
+/* ここまで二段組 */
+.con-con {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 1200px;
+    height: 200px;
+}
+.con-con img{
+    padding: 5px;
+    border-radius: 20px;
+    width: 300px;
+    height: 200px;
+}
+
+/* ここからリンクボタン */
+.link-button-area {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.link-button {
+    background-color: #89E9FC;
+    display: inline-block;
+    min-width: 180px;
+    line-height: 48px;
+    border-radius: 24px;
+    font-family: 'kiwi maru','マメロン 5 Hi Reguler';
+    font-size: 16px;
+    color: #2c1386;
+}
+/* マウスオン */
+.link-button:hover {
+    background-color: #B0DAFF;
+}
+/* ここまでリンクボタン */
+
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1;
+    background: linear-gradient(#2d885c, #010e07);
+}
+html {
+    scroll-behavior: smooth; /* スムーズスクロールを有効にする */
+}
+
+/* 例: 高さ70pxの固定ヘッダーがある場合 */
+section {
+    scroll-margin-top: 50px; /* ターゲット位置から50px上にオフセットする */
+}
+
+img {
+    max-width: 100%;
+}
+/* 料金表はここから */
+#shop {
+    margin-top: 300px;
+}
+.ticket-heading {
+    font-size: 20px;
+    text-align: center;
+    color: #d2f7ff;
+    margin: 0 auto;
+    padding: 30px;
+    line-height: 2;
+}
+.ticket-heading {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+}
+
+th {
+    background-color: #0faa69;
+    text-align: center;
+    height: 40px;
+    color: #FFF;
+    text-shadow: 10px;
+}
+
+th,td {
+    border: solid 1px;
+    text-align: center;
+    padding: 10px;
+    color: #FFF;
+}
+.tr1 {
+    font-size: 80%;
+    margin-bottom: 5px;
+}
+.th1 {
+    background-image: linear-gradient(transparent 40%, #2c8aa1 70%, #0e4e97 80%, transparent 90%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+td span {
+    color: #f07373;
+    font-size: 70%;
+}
+
+/* ここまでが表 */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fbfffe;
+    height: 70px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+/* ここからヘッダー透明化 */
+.header {
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: blur(5px); /* ガラス風にする場合 */
+}
+
+/* ここまで透明化 */
+
+.header-logo {
+    display: block;
+    width: 160px;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+}
+
+.toggle-menu-button {
+    display: none;
+}
+
+.site-menu ul {
+    display: flex;
+}
+.site-menu ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.site-menu ul li a {
+    font-family: "Kiwi Maru", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-weight: bold;
+}
+.footer {
+    color: #FFFFFF;
+    background-color: #000c05;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.footer-logo {
+    display: block;
+    width: 350px;
+    margin-top: 90px;
+}
+.footer-tel {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 28px;
+}
+.footer-time {
+    font-size: 13px;
+    margin-top: 16px;
+}
+
+.copyright {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 90px;
+}
+@media (max-width: 800px) {
+    .first-view {
+        height: calc(100vh - 50px);
+        background-image:  url("../images/01-Mus-img/top.jpg");
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .site-menu ul {
+        display: block;
+        text-align: center;
+    }
+}
+.site-menu li {
+    margin-top: 20px;
+}
+.main {
+    padding-top: 70px;
+    margin-bottom: 30px;
+}
+.footer-logo {
+    margin-top: 60px;
+}
+.footer-sitename {
+    margin: 10px auto;
+}
+.footer-sitename img {
+    width: 200px;
+    height: 30px;
+}
+.footer-tel {
+    font-size: 20px;
+}
+.copyright {
+    margin-top: 50px;
+}
+
+.picture {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    height: 600px;
+    width: 920px;
+    margin: 0 auto;
+}
+
+.picture img {
+    padding: 10px;
+    border-radius: 20px;/*角丸指定*/
+    /*border-radius: 50%; /*正円=あとは％で指定*/
+    width: 300px;
+    height: 200px;
+
+}
+
+/* タイル型
+.picture {
+    display: grid;
+    justify-content: space-around;
+    gap: 10px;
+    grid-template-columns: 300px 300px 300px 300px;
+    grid-template-rows: 200px 200px;
+
+}*/
+
+
+.picture {
+    max-width: 1600px; /*最大値*/
+    max-height: 1600px; /*最大値*/
+    /*min-width: 500; /*最小値*/
+    /*min-height: 500px; /*最小値*/
+    padding: 10px;
+}
+
+/*.box_con02 {
+    margin-left: 260px;
+    margin-right: 260px;
+}
+
+.box_pri {
+    text-align: center;
+    margin: 30px;
+}
+.box_pri h4 {
+    justify-content: space-around;
+}
+.box_check {
+    text-align: center;
+}
+.btn {
+    text-align: center;
+}
+*/
+
+/* ここからハンバーガーメニュー */
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #35bb99;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+#menu-btn-check {
+    display: none;
+}
+
+/* ここからハンバーガーメニュー内容 */
+
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #FFFFFF;
+    list-style: none;
+}
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 15px 15px 10px 10px;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #FFFFFF;
+    border-right: solid 2px #FFFFFF;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+.menu-content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 80;
+    background-color: #3584BB;
+    transition: all 0.5s;
+}
+#menu-btn-check:checked ~ .menu-content {
+    left: 80%;
+
+}
+/* ここまでハンバーガーメニュー */

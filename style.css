@@ -182,11 +182,11 @@ body {
 }
     /* スクロールで上向きに変える */
 .page_top.is-up a::before {
-    transform: translateX(-50%) translateY(-60%) rotate(-135deg);
+    transform: translateX(-50%) translateY(-70%) rotate(-135deg);
 }
 .page_top.is-up span::after {
     content: "TOP";
-    top: 40%;
+    top: 41%;
     left: 27%;
 }
 

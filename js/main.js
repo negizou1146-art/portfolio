@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.thumb-track');
     if (!loop || !track) return;
 
-        let speed = 0.8;
+        let speed = 0.6;
         let x = 0;
         let singleWidth = 0;
         let resumeTimer = null;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // hover 停止
     loop.addEventListener('mouseenter', () => speed = 0);
-    loop.addEventListener('mouseleave', () => speed = 0.5);
+    loop.addEventListener('mouseleave', () => speed = 0.6);
 
     infiniteScroll();
 

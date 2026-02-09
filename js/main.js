@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     })();
 
-
     // page_top 表示制御
     (() => {
         const pageTop = document.querySelector('.page_top');
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
             pageTop.classList.toggle('is-up', window.scrollY > 100);
         });
     })();
-
 
     // 無限サムネスクロール
     const loop  = document.querySelector('.thumb-loop');
@@ -32,48 +30,80 @@ document.addEventListener('DOMContentLoaded', () => {
         let singleWidth = 0;
         let resumeTimer = null;
 
-        window.addEventListener('load', () => {
-            singleWidth = track.scrollWidth / 2;
-        });
+    window.addEventListener('load', () => {
+        singleWidth = track.scrollWidth / 2;
+    });
 
-        function infiniteScroll() {
-            x -= speed;
+    function infiniteScroll() {
+        x -= speed;
 
-            // ここが肝：半分まで行ったら裏で戻す
-            if (Math.abs(x) >= singleWidth) {
-                x = 0;
-            }
-
-            track.style.transform = `translateX(${x}px)`;
-            requestAnimationFrame(infiniteScroll);
+        if (Math.abs(x) >= singleWidth) {
+            x = 0;
         }
 
-    // hover 停止
+        track.style.transform = `translateX(${x}px)`;
+        requestAnimationFrame(infiniteScroll);
+    }
+
     loop.addEventListener('mouseenter', () => speed = 0);
     loop.addEventListener('mouseleave', () => speed = 0.5);
 
     infiniteScroll();
 
-    // サムネクリックでスクロール
+    // サムネ強調処理
+    const setActiveById = (id) => {
+        document.querySelectorAll('.thumb-track img').forEach(img => img.classList.remove('active'));
+        document.querySelectorAll(`.thumb-track img[data-target="${id}"]`).forEach(img => img.classList.add('active'));
+    };
+
+    // work-area2内のコンテンツをID順で管理
+    const workArea2 = document.querySelector('.work-area2');
+    const workItems = Array.from(workArea2.children); // .w-wrap 要素
+        let currentIndex = 0;
+
+    // サムネクリック処理
     document.querySelectorAll('.thumb-track img').forEach(thumb => {
         thumb.addEventListener('click', () => {
             speed = 0;
             clearTimeout(resumeTimer);
 
-            const target = document.getElementById(thumb.dataset.target);
-            if (!target) return;
+            const id = thumb.dataset.target;
 
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'start'
-            });
+            // currentIndex をクリックしたIDに合わせる
+            const index = workItems.findIndex(w => w.id === id);
+            if (index >= 0) currentIndex = index;
 
-            resumeTimer = setTimeout(() => {
-                speed = 0.5;
-            }, 3000);
+            setActiveById(id);
+
+            const target = document.getElementById(id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+
+            resumeTimer = setTimeout(() => { speed = 0.5; }, 3000);
         });
     });
 
-});
+    // 左右ボタン処理
+    const btnLeft = document.querySelector('.scroll-left');
+    const btnRight = document.querySelector('.scroll-right');
 
+    btnLeft.addEventListener('click', () => {
+        if (currentIndex > 0) currentIndex--;
+        const id = workItems[currentIndex].id;
+
+        setActiveById(id);
+
+        const target = document.getElementById(id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    });
+
+    btnRight.addEventListener('click', () => {
+        if (currentIndex < workItems.length - 1) currentIndex++;
+        const id = workItems[currentIndex].id;
+
+        setActiveById(id);
+
+        const target = document.getElementById(id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    });
+
+});

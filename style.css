@@ -377,6 +377,7 @@ h3 {
     /* サムネイル */
 .works-slider {
     scroll-snap-type: mandatory;
+    position: relative;
 }
 .thumb-loop {
     width: calc(100% - 600px);
@@ -388,6 +389,7 @@ h3 {
 .thumb-loop::after {
     content: "サムネイルをクリックで表示位置までスクロールします。";
     font-size: 0.7em;
+    margin: 1px;
 }
 .thumb-track {
     display: flex;
@@ -396,19 +398,52 @@ h3 {
     will-change: transform;
     padding: 10px;
     border: 2px double var(--primary-color);
+    align-items: center;
 }
 
 .thumb-track img {
-    width: 40px;
+    width: auto;
+    height: 46px;
     flex-shrink: 0;
+    transition: transform 0.1s, opacity 0.1s;
+    opacity: 0.9;
 }
 
 .thumb-track img.active {
-    transform: scale(1.2);
+    transform: scale(1.4);
     opacity: 1;
 }
 
+    /* 左右のボタン */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 8px;
+}
+
+.scroll-left {
+    left: 10px;
+}
+
+.scroll-right {
+    right: 10px;
+}
+
+.scroll-btn:hover {
+    background: var(--text-color);
+    opacity: 0.7;
+}
 /* 横スクロールここまで */
+
 
 /* 作品集へのリンクロゴ */
 .work-logo img {

@@ -13,6 +13,10 @@
     <script src="js/main.js"></script>
 </head>
 
+<!-- モーダル -->
+<div id="img-modal" class="img-modal">
+    <img class="modal-content" id="modal-img">
+</div>
 
 <body>
 
@@ -34,11 +38,12 @@
         </h1>
 
         <!-- ハンバーガー -->
-        <div id="menu-button">
+         <input type="checkbox" id="toggle">
+         <label id="menu-button" for="toggle">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </label>
 
 
         <!-- FV用ナビ -->
@@ -154,7 +159,7 @@
                             <p>下にスクロールするほど暗く、深い場所へ潜っていくイメージで背景を調整しています。</p>
                                 <p class="work-logo2">
                                     <a href="Contents/01-Museum.html" target="_blank">
-                                        <img src="images/01-Mus-logo.png" alt="博物館のロゴ画像">
+                                        <img src="images/01-Mus-logo-large.png" alt="博物館のロゴ画像">
                                     </a>
                                 </p>
                             <p><span class="up"></span>
@@ -179,7 +184,7 @@
                     <div class="thumb-loop">
                         <div class="thumb-track">
                             <img src="images/00-Aqua-logo.png" data-target="work-1">
-                            <img src="images/01-Mus-logo.png" data-target="work-2">
+                            <img src="images/01-Mus-logo-large.png" data-target="work-2">
                             <img src="images/02-Cafe-logo.png" data-target="work-3">
                             <img src="images/logo4.png" data-target="work-4">
                             <img src="images/post01-1.png" data-target="work-5">
@@ -212,7 +217,7 @@
                         </div>
                         <div class="w-wrap" id="work-2">
                             <div class="w-2">
-                                <img src="images/01-Mus-logo.png" alt="博物館のロゴ画像">
+                                <img src="images/01-Mus-logo-large.png" alt="博物館のロゴ画像">
                             </div>
                             <div class="p-1">
                                 <h3>博物館のロゴ</h3>
@@ -225,11 +230,11 @@
                         </div>
                         <div class="w-wrap" id="work-3">
                             <div class="w-2">
-                                <img src="images/02-Cafe-logo.png" alt="カフェのロゴ画像">
+                                <img src="images/02-Cafe-logo-2.png" alt="カフェのロゴ画像">
                             </div>
                             <div class="p-1">
-                                <h3>カフェのロゴ</h3>
-                                <p>こちらは架空のカフェのロゴを想定して制作しました。</p>
+                                <h3>カフェのロゴ他</h3>
+                                <p>こちらは架空のカフェのロゴやアイコンを想定して制作しました。</p>
                                 <p>南国の楽園をイメージしています。
                                     <br>モク・ラニはハワイ語で「天国の島」です。
                                 </p>
@@ -251,7 +256,8 @@
                         </div>
                         <div class="w-wrap" id="work-5">
                             <div class="w-2">
-                                <img src="images/post01-1.png" alt="さくらラテのポスター画像">
+                                <img src="images/post01-1.png"
+                                    data-large="images/post01-large.png" alt="さくらラテのポスター画像">
                             </div>
                             <div class="p-1">
                                 <h3>架空のポスター</h3>
@@ -267,7 +273,8 @@
                         </div>
                             <div class="w-wrap" id="work-6">
                             <div class="w-2">
-                                <img src="images/curry02-1.png" alt="黄金のキーマカレーのポスター画像">
+                                <img src="images/curry02-1.png"
+                                    data-large="images/curry02-large.png" alt="黄金のキーマカレーのポスター画像">
                             </div>
                             <div class="p-1">
                                 <h3>カレーのポスター</h3>
@@ -282,7 +289,8 @@
                         </div>
                         <div class="w-wrap" id="work-7">
                             <div class="w-2">
-                                <img src="images/panhu01.png" alt="観光パンフレットの画像">
+                                <img src="images/panhu01.png"
+                                    data-large="images/panhu01-large.png" alt="観光パンフレットの画像">
                             </div>
                             <div class="p-1">
                                 <h3>架空の観光パンフレット</h3>

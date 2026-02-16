@@ -24,6 +24,11 @@ body {
     overflow-x: hidden;
 }
 
+/* ページ内リンク移動時の位置調整 */
+.jump{
+    padding-top: 50px;
+}
+
 /* ヘッダー */
 #site-header {
     width: 200px;
@@ -106,10 +111,12 @@ body {
 .button:active {
   transform: translateY(5px) scale(0.7);
 }
-/* スクロールすると上部にはりつくナビボタン。JSでつけ外しする。 */
-.center-nav.is-fixed-top {
-    top: -45px;
-    transform: translate(-50%, 0) scale(0.5);
+@media(min-width:700px) {
+    /* スクロールすると上部にはりつくナビボタン。JSでつけ外しする。 */
+    .center-nav.is-fixed-top {
+        top: -45px;
+        transform: translate(-50%, 0) scale(0.5);
+    }
 }
 
 
@@ -197,8 +204,8 @@ body {
 #menu-button {
     position: fixed;
     display: none;
-    top: 0;
-    right: 15%;
+    top: 2%;
+    left: 4%;
     width: 30px;
     margin: 20px auto;
     cursor: pointer;
@@ -207,9 +214,13 @@ body {
 #menu-button span {
     display: block;
     height: 2px;
-    background: var(--secondary-color);
+    background: var(--text-color);
     margin: 6px 0;
     transition: .4s;
+}
+
+#toggle {
+    display: none;
 }
 
 /* バーガー開いた状態 *//* nth-childは、上から数えて何番目の要素に適用するかを指定する */
@@ -444,6 +455,24 @@ h3 {
 }
 /* 横スクロールここまで */
 
+/* 画像モーダル */
+.img-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.img-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+/* モーダルここまで */
 
 /* 作品集へのリンクロゴ */
 .work-logo img {
@@ -503,17 +532,35 @@ h3 {
         display: none;
         position: fixed;
         inset: 0;
-        background: var(--primary-color);
+        /* background: var(--primary-color); */
     }
 
     #site-nav ul {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        flex-direction: column;
-        padding: 30px;
+        top: 48%;
+        left: 54%;
+        /* transform: translate(-50%, -50%); */
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        width: 90%;
         border-radius: 20px;
+    }
+
+    #toggle:checked ~ #site-nav {
+        display: block;
+    }
+
+    /* 開いた状態 */
+    #toggle:checked + #menu-button span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #toggle:checked + #menu-button span:nth-child(2) {
+        opacity: 0;
+    }
+    #toggle:checked + #menu-button span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
     .content {
         padding: 0;
@@ -531,6 +578,11 @@ h3 {
     .thumb-loop {
         display: none;
     }
+    /* ページ内リンク移動時の位置調整 */
+    .jump{
+        padding-top: 90px;
+    }
+
 }
 
 
@@ -576,11 +628,6 @@ footer small {
     font-family: "Font Awesome 6 Free";
     content: '\e4e8';
     font-weight: 900;
-}
-
-/* ページ内リンク移動時の位置調整 */
-.jump{
-    padding-top: 50px;
 }
 
 

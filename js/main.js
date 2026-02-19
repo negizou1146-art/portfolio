@@ -1,182 +1,199 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ナビ固定
-    (() => {
-        const nav = document.querySelector('.center-nav');
-        if (!nav) return;
+    // ナビ固定 + page_top
+    const nav = document.querySelector('.center-nav');
+    const pageTop = document.querySelector('.page_top');
 
-        window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
+        if (nav) {
             nav.classList.toggle('is-fixed-top', window.scrollY > 50);
-        });
-    })();
-
-    // page_top 表示制御
-    (() => {
-        const pageTop = document.querySelector('.page_top');
-        if (!pageTop) return;
-
-        window.addEventListener('scroll', () => {
-            pageTop.classList.toggle('is-up', window.scrollY > 100);
-        });
-    })();
-
-    // 無限サムネスクロール
-    const loop  = document.querySelector('.thumb-loop');
-    const track = document.querySelector('.thumb-track');
-    if (!loop || !track) return;
-
-        let speed = 0.5;
-        let x = 0;
-        let singleWidth = 0;
-        let resumeTimer = null;
-
-        window.addEventListener('load', () => {
-            singleWidth = track.scrollWidth / 2;
-        });
-
-        function infiniteScroll() {
-            x -= speed;
-
-            if (Math.abs(x) >= singleWidth) {
-                x = 0;
-            }
-
-            track.style.transform = `translateX(${x}px)`;
-            requestAnimationFrame(infiniteScroll);
         }
+        if (pageTop) {
+            pageTop.classList.toggle('is-up', window.scrollY > 100);
+        }
+    });
 
-        loop.addEventListener('mouseenter', () => speed = 0);
-        loop.addEventListener('mouseleave', () => speed = 0.5);
 
-        infiniteScroll();
+    // work-area2 基本取得
+    const workArea2 = document.querySelector('.work-area2');
+    if (!workArea2) return;
 
-    // サムネ強調処理
+    const workItems = Array.from(workArea2.children);
+    let currentIndex = 0;
+
+
     const setActiveById = (id) => {
-        document.querySelectorAll('.thumb-track img').forEach(img => img.classList.remove('active'));
-        document.querySelectorAll(`.thumb-track img[data-target="${id}"]`).forEach(img => img.classList.add('active'));
+        document.querySelectorAll('.thumb-track img')
+            .forEach(img => img.classList.remove('active'));
+
+        document.querySelectorAll(`.thumb-track img[data-target="${id}"]`)
+            .forEach(img => img.classList.add('active'));
     };
 
-    // work-area2内のコンテンツをID順で管理
-    const workArea2 = document.querySelector('.work-area2');
-    const workItems = Array.from(workArea2.children); // .w-wrap 要素
-        let currentIndex = 0;
+    const moveToCurrent = () => {
+        const id = workItems[currentIndex].id;
+        setActiveById(id);
 
-    // サムネクリック処理
+        const target = document.getElementById(id);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'start'
+            });
+        }
+    };
+
+
+    // サムネクリック制御
     document.querySelectorAll('.thumb-track img').forEach(thumb => {
         thumb.addEventListener('click', () => {
-            speed = 0;
-            clearTimeout(resumeTimer);
 
             const id = thumb.dataset.target;
+            if (!id) return;
 
-            // currentIndex をクリックしたIDに合わせる
             const index = workItems.findIndex(w => w.id === id);
             if (index >= 0) currentIndex = index;
 
             setActiveById(id);
 
             const target = document.getElementById(id);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-
-            resumeTimer = setTimeout(() => { speed = 0.5; }, 3000);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'start'
+                });
+            }
         });
     });
 
-    // 左右ボタン処理
-    const btnLeft = document.querySelector('.scroll-left');
+
+    // 左右ボタン
+    const btnLeft  = document.querySelector('.scroll-left');
     const btnRight = document.querySelector('.scroll-right');
 
+    if (btnLeft) {
         btnLeft.addEventListener('click', () => {
-            if (currentIndex > 0) currentIndex--;
-            const id = workItems[currentIndex].id;
-
-            setActiveById(id);
-
-            const target = document.getElementById(id);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            currentIndex = (currentIndex - 1 + workItems.length) % workItems.length;
+            moveToCurrent();
         });
+    }
 
+    if (btnRight) {
         btnRight.addEventListener('click', () => {
-            if (currentIndex < workItems.length - 1) currentIndex++;
-            const id = workItems[currentIndex].id;
-
-            setActiveById(id);
-
-            const target = document.getElementById(id);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            currentIndex = (currentIndex + 1) % workItems.length;
+            moveToCurrent();
         });
+    }
 
-    // 画像モーダル
+
+    // モーダル制御
     const modal = document.getElementById('img-modal');
     const modalImg = document.getElementById('modal-img');
-    const closeBtn = document.querySelector('.img-modal .close');
+    if (!modal || !modalImg) return;
 
-        // work-area2 内の画像だけモーダルを開く
-        document.querySelectorAll('.work-area2 img').forEach(img => {
-            img.addEventListener('click', () => {
-                modal.style.display = 'flex';
+        const openModal = () => {
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        };
 
-                // 大画像があればそれ、なければ通常
-                modalImg.src = img.dataset.large || img.src;
+        const closeModal = () => {
+            modal.classList.remove('is-open');
+            document.body.style.overflow = '';
+        };
 
-                // 今開いた画像のindexを合わせる
-                const wrap = img.closest('.w-wrap');
-                if (!wrap) return;
+    // モーダルクリック制御
+    document.querySelectorAll('.work-area2 img').forEach(img => {
+        img.addEventListener('click', () => {
 
-                const index = workItems.findIndex(w => w.id === wrap.id);
-                if (index >= 0) currentIndex = index;
+            // 大きな画像があればモーダル表示。なければ通常画像。
+            openModal();
+            modalImg.src = img.dataset.large || img.src;
 
-                setActiveById(wrap.id);
-            });
+            const wrap = img.closest('.w-wrap');
+            if (!wrap) return;
+
+            const index = workItems.findIndex(w => w.id === wrap.id);
+            if (index >= 0) currentIndex = index;
+
+            setActiveById(wrap.id);
         });
+    });
 
-        // 背景クリックで閉じる
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
+    // 背景をクリックでもどる
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
 
-        // キーボード操作
-        document.addEventListener('keydown', (e) => {
+    // モーダル中のキーボード制御
+    document.addEventListener('keydown', (e) => {
 
-            // モーダルが開いていなければ何もしない
-            if (modal.style.display !== 'flex') return;
+        if (!modal.classList.contains('is-open')) return;
 
-            // Escで閉じる
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                modal.style.display = 'none';
-                return;
-            }
+        // ESCキーでもどる
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            closeModal();
+            return;
+        }
 
-            // → 次へ
-            if (e.key === 'ArrowRight') {
-                e.preventDefault();
+        // 右キー
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            currentIndex = (currentIndex + 1) % workItems.length;
+            updateModalImage();
+        }
 
-                if (currentIndex < workItems.length - 1) currentIndex++;
+        // 左キー
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            currentIndex = (currentIndex - 1 + workItems.length) % workItems.length;
+            updateModalImage();
+        }
+    });
 
-                const id = workItems[currentIndex].id;
-                setActiveById(id);
 
-                const targetImg = document.querySelector(`#${id} img`);
-                if (targetImg) modalImg.src = targetImg.dataset.large || targetImg.src;
-            }
+    // SPのスワイプ制御
 
-            // ← 前へ
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-                if (currentIndex > 0) currentIndex--;
+        modal.addEventListener('touchstart', (e) => {
+            if (!modal.classList.contains('is-open')) return;
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
 
-                const id = workItems[currentIndex].id;
-                setActiveById(id);
+        modal.addEventListener('touchend', (e) => {
+            if (!modal.classList.contains('is-open')) return;
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
 
-                const targetImg = document.querySelector(`#${id} img`);
-                if (targetImg) modalImg.src = targetImg.dataset.large || targetImg.src;
-            }
-        });
+    function handleSwipe() {
+        const swipeDistance = touchEndX - touchStartX;
+        const threshold = 50;
 
-    // モーダルここまで
+        if (swipeDistance < -threshold) {
+            currentIndex = (currentIndex + 1) % workItems.length;
+            updateModalImage();
+        }
+
+        if (swipeDistance > threshold) {
+            currentIndex = (currentIndex - 1 + workItems.length) % workItems.length;
+            updateModalImage();
+        }
+    }
+
+    // 画像更新を共通化
+    function updateModalImage() {
+        const id = workItems[currentIndex].id;
+        setActiveById(id);
+
+        const targetImg = document.querySelector(`#${id} img`);
+        if (targetImg) {
+            modalImg.src = targetImg.dataset.large || targetImg.src;
+        }
+    }
 
 });

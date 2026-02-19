@@ -13,12 +13,16 @@
     <script src="js/main.js"></script>
 </head>
 
-<!-- モーダル -->
-<div id="img-modal" class="img-modal">
-    <img class="modal-content" id="modal-img">
-</div>
-
 <body>
+
+    <!-- モーダル -->
+    <div id="img-modal" class="img-modal">
+        <img class="modal-content" id="modal-img">
+        <p class="modal-hint">
+            ← → キーで画像切り替え
+            <br>画像以外をクリックもしくは ESCキーで戻ります。
+        </p>
+    </div>
 
     <section id="top" class="jump">
     </section>
@@ -103,18 +107,21 @@
                                 <br>・ITパスポート　・色彩検定３級　・そろばん３級　
                                 <br>・普通自動車第一種運転免許
                             </p>
+                            <h4>趣味</h4>
+                            <p>ライトノベル、マンガ、ゲーム、VTuberの視聴</p>
                     </div>
 
                 </div>
             </section>
 
-            <section id="work" class="content c-2 jump">
+            <section id="work" class="content jump">
                 <div class="con-header">
                     <h2>作品集</h2>
                     <p>こちらはWebページの制作物です。
                         <br>制作したページ内で使用されている画像は、他者の著作物またはAI生成によるものです。
                     </p>
                     <p>Webページのミニ画像はスクロールできます。</p>
+                    <a href="#work-a2" class="push-btn">その他の作品はこちら</a>
                 </div>
 
                 <div class="work-area">
@@ -125,11 +132,9 @@
                             <br>＜Moku Lani＞のWebページです。
                         </p>
                         <p>コンセプトは「南国の楽園」</p>
-                        <p>植物のイメージで緑色をメインに、
-                            <br>南国風のカラフルな写真を配置。
-                        </p>
-                        <p>画面を落ち着かせるため、
-                            <br>背景はシンプルに白色でまとめました。
+                        <p>大学生～２０代後半までの男女をターゲットにしています。
+                            <br>植物のイメージで緑色をメインに、南国風のカラフルなドリンク＆デザート写真を左右に配置。
+                            <br>画面を落ち着かせるため、背景はシンプルに白色でまとめました。
                         </p>
                             <p class="work-logo">
                                 <a href="Contents/02-Cafe.html" target="_blank">
@@ -153,10 +158,12 @@
                         </div>
                         <div class="p-1">
                             <h3>空想の博物館</h3>
-                            <p>空想上にしか存在しない、未知の世界を展示する博物館
+                            <p>空想上にしか存在しない、<br>未知の世界を展示する博物館
                                 をイメージして作られたWebページです。</p>
                             <p>コンセプトは「未知への探検」</p>
-                            <p>下にスクロールするほど暗く、深い場所へ潜っていくイメージで背景を調整しています。</p>
+                            <p>「少年少女の冒険心を心に持ち続けている大人」をメインターゲットに、
+                                家族連れ、カップルでの観覧を想定しています。</p>
+                            <p>下にスクロールするほど暗く、深い場所へと潜っていくイメージで背景を調整しました。</p>
                                 <p class="work-logo2">
                                     <a href="Contents/01-Museum.html" target="_blank">
                                         <img src="images/01-Mus-logo-large.png" alt="博物館のロゴ画像">
@@ -170,12 +177,13 @@
 
                 </div>
 
-                <div class="con-header">
+                <div id="work-a2" class="con-header jump push">
                     <h2>その他の作品</h2>
                     <p>Webページ以外の制作物です。</p>
                     <p>ロゴデザインやパンフレット、ポスターなど。
                         <br>基本的にPowerPointで作成しています。
                     </p>
+                    <a class="push-btn" href="#work">Webページ作品はこちら</a>
                 </div>
 
                 <!-- その他作品の中身ここから -->
@@ -187,17 +195,19 @@
                             <img src="images/01-Mus-logo-large.png" data-target="work-2">
                             <img src="images/02-Cafe-logo.png" data-target="work-3">
                             <img src="images/logo4.png" data-target="work-4">
-                            <img src="images/post01-1.png" data-target="work-5">
-                            <img src="images/curry02-1.png" data-target="work-6">
-                            <img src="images/panhu01.png" data-target="work-7">
+                            <img src="images\Cafe-banners-s.png" data-target="work-5">
+                            <img src="images/post01-1.png" data-target="work-6">
+                            <img src="images/curry02-1.png" data-target="work-7">
+                            <img src="images/panhu01.png" data-target="work-8">
                             <!-- サムネループ用の複製 -->
                             <img src="images/00-Aqua-logo.png" data-target="work-1">
                             <img src="images/01-Mus-logo.png" data-target="work-2">
                             <img src="images/02-Cafe-logo.png" data-target="work-3">
                             <img src="images/logo4.png" data-target="work-4">
-                            <img src="images/post01-1.png" data-target="work-5">
-                            <img src="images/curry02-1.png" data-target="work-6">
-                            <img src="images/panhu01.png" data-target="work-7">
+                            <img src="images\Cafe-banners-s.png" data-target="work-5">
+                            <img src="images/post01-1.png" data-target="work-6">
+                            <img src="images/curry02-1.png" data-target="work-7">
+                            <img src="images/panhu01.png" data-target="work-8">
                         </div>
                     </div>
 
@@ -210,8 +220,8 @@
                             </div>
                             <div class="p-1">
                                 <h3>水族館のロゴ</h3>
-                                <p>こちらは架空の水族館のロゴを想定して制作しました。</p>
-                                <p>水面がきらめくようなイメージを重ねています。</p>
+                                <p>架空の水族館のロゴを想定して制作しました。</p>
+                                <p>太陽の光をしっかり反射して、夏の水面がきらめくような爽やかなイメージを重ねています。</p>
                                 <p>WEBサイト「Font Meme」とベジェ曲線を用いて作成しています。</p>
                             </div>
                         </div>
@@ -222,6 +232,7 @@
                             <div class="p-1">
                                 <h3>博物館のロゴ</h3>
                                 <p>こちらは架空の博物館のロゴを想定して制作しました。</p>
+                                <p>山の麓にどっしりと構える、博物館の建物をイメージしています。</p>
                                 <p>英文の意味は
                                     <br>「幻想的な世界へと誘う博物館」
                                 </p>
@@ -235,9 +246,9 @@
                             <div class="p-1">
                                 <h3>カフェのロゴ他</h3>
                                 <p>こちらは架空のカフェのロゴやアイコンを想定して制作しました。</p>
-                                <p>南国の楽園をイメージしています。
-                                    <br>モク・ラニはハワイ語で「天国の島」です。
-                                </p>
+                                <p>南国の楽園、緑豊かな島をイメージして緑のカラーで統一しました。
+                                    一部にアクセントとして、トロピカルなオレンジ、ピンク、海のブルーを使用しています。</p>
+                                <p>Moku Lani（モク・ラニ）はハワイ語で「天国の島」という意味があります。</p>
                                 <p>ベジェ曲線と図形アイコンを組み合わせています。</p>
                             </div>
                         </div>
@@ -256,6 +267,19 @@
                         </div>
                         <div class="w-wrap" id="work-5">
                             <div class="w-2">
+                                <img src="images\Cafe-banners.png" alt="カフェメニューのバナー画像">
+                            </div>
+                            <div class="p-1">
+                                <h3>カフェメニューのバナー</h3>
+                                <p>架空のカフェWEBページ内のバナー画像として制作しました。</p>
+                                <p>フェア商品であるカレー２種は赤と青を対比させ、食べ比べを意識するように。
+                                    <br>デザートフェアは、商品を知ってもらうためにデザートやドリンクの画像を並べました。
+                                </p>
+                                <p>商品写真は他者の著作物です。</p>
+                            </div>
+                        </div>
+                        <div class="w-wrap" id="work-6">
+                            <div class="w-2">
                                 <img src="images/post01-1.png"
                                     data-large="images/post01-large.png" alt="さくらラテのポスター画像">
                             </div>
@@ -271,7 +295,7 @@
                                 </p>
                             </div>
                         </div>
-                            <div class="w-wrap" id="work-6">
+                            <div class="w-wrap" id="work-7">
                             <div class="w-2">
                                 <img src="images/curry02-1.png"
                                     data-large="images/curry02-large.png" alt="黄金のキーマカレーのポスター画像">
@@ -287,7 +311,7 @@
                                 <p>AI生成の写真を使用し、ベジェ曲線でお皿に金模様をいれています。</p>
                             </div>
                         </div>
-                        <div class="w-wrap" id="work-7">
+                        <div class="w-wrap" id="work-8">
                             <div class="w-2">
                                 <img src="images/panhu01.png"
                                     data-large="images/panhu01-large.png" alt="観光パンフレットの画像">

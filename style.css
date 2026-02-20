@@ -118,9 +118,10 @@ body {
         transform: translate(-50%, 0) scale(0.5);
     }
 }
+/* ナビここまで */
 
 
-/* ページトップに移動するやつ */
+/* 右下に表示されているページトップに移動するボタン */
 .page_top {
     position: fixed;
     right: 20px;
@@ -235,7 +236,7 @@ body {
 }
 
 
-/* スライドショー（CSSのみ） */
+/* 背景スライドショー（CSSのみ） */
 #mainimg {
     position: fixed;
     inset: 0;
@@ -273,6 +274,7 @@ body {
     43% { opacity: 0;}
     100% {opacity: 0;}
 }
+/* 背景ここまで */
 
 
 /* お知らせ部分 */
@@ -322,6 +324,7 @@ main {
     padding: 0px 10px 20px;
 }
 
+/* 作品集の移動ボタン */
 .push-btn {
     display: block;
     position: relative;
@@ -378,6 +381,7 @@ h3 {
 }
 
 
+/* プロフィール画像 */
 .prof img {
     display: block;
     width: 60%;
@@ -391,6 +395,7 @@ h3 {
 }
 
 
+/* Webページ作品集エリア */
 .work-area {
     display: grid;
     grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
@@ -399,11 +404,12 @@ h3 {
     padding-bottom: 20px;
 }
 
-/* 横スクロールするコンテンツエリア */
+/* 横スクロールする、その他作品コンテンツエリア */
 .works-slider {
     overflow: hidden;
     position: relative;
     border: 6px double var(--primary-color);
+    scroll-snap-type: mandatory;
 }
 
 .work-area2 {
@@ -423,7 +429,7 @@ h3 {
     scroll-snap-align: start;
 }
 .w-wrap::after {
-    content: url(images/T_Y_icon.png);
+    content: url(images/T_Y_icon.png); /* わいの署名アイコン */
     position: absolute;
     top: 3%;
     left: 63%;
@@ -431,11 +437,6 @@ h3 {
 }
 
     /* サムネイル */
-.works-slider {
-    scroll-snap-type: mandatory;
-    position: relative;
-}
-
 .thumb-loop {
     width: calc(100% - 600px);
     margin: 10px auto;
@@ -531,11 +532,41 @@ h3 {
     pointer-events: auto;
 }
 
-.img-modal img {
+#modal-img {
     margin-top: -50px;
     max-width: 90%;
     max-height: 80%;
 }
+
+.modal-prev,
+.modal-next {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--secondary-color);
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 8px;
+    opacity: 0.9;
+}
+.modal-prev:hover,
+.modal-next:hover {
+    background: var(--text-color);
+    color: #fff;
+}
+
+.modal-prev {
+    left: 15%;
+}
+
+.modal-next {
+    right: 15%;
+}
+
 .modal-hint {
     position: absolute;
     bottom: 1%;
@@ -599,6 +630,7 @@ h3 {
     max-width: 400px;
     overflow: auto;
     justify-self: center;
+    margin-top: 40px;
 }
 .w-wrap::before {
     content: "↑　クリックで大きい画像を表示　↑";
@@ -614,9 +646,15 @@ h3 {
     width: 100%;
     display: block;
 }
-.p-1 {
-    padding: 20px 50px 50px;
+.area1-p {
+    padding: 30px 50px 40px;
 }
+.area2-p {
+    padding: 30px 50px 40px;
+}
+
+/* 作品集エリアここまで */
+
 
 /* SPスマートフォン時だけ */
 @media(max-width: 900px) {
@@ -685,6 +723,9 @@ h3 {
         display: none;
     }
     .scroll-btn {
+        display: none;
+    }
+    .modal-prev,.modal-next {
         display: none;
     }
     /* ページ内リンク移動時の位置調整 */

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // work-area2 の縦横スクロール制御、オフセットの値は上下位置をpx数で設定
-    function scrollToTarget(target, offset = -180) {
+    function scrollToTarget(target, offset = -150) {
         if (!target) return;
 
         // 横スクロール

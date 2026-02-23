@@ -365,7 +365,7 @@ h2 {
 }
 h3 {
     font-size: 1.5rem;
-    margin: 10px;
+    margin: 0px;
 }
 
 /* コンテンツエリアの重なり表現 */
@@ -427,6 +427,7 @@ h3 {
     align-items: center;
     box-sizing: border-box;
     scroll-snap-align: start;
+    margin-top: -10px;
 }
 .w-wrap::after {
     content: url(images/T_Y_icon.png); /* わいの署名アイコン */
@@ -439,7 +440,7 @@ h3 {
     /* サムネイル */
 .thumb-loop {
     width: calc(100% - 600px);
-    margin: 10px auto;
+    margin: 10px auto 0;
     overflow: hidden;
     position: relative;
     scroll-snap-align: start;
@@ -630,7 +631,7 @@ h3 {
     max-width: 400px;
     overflow: auto;
     justify-self: center;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .w-wrap::before {
     content: "↑　クリックで大きい画像を表示　↑";
@@ -650,7 +651,7 @@ h3 {
     padding: 30px 50px 40px;
 }
 .area2-p {
-    padding: 30px 50px 40px;
+    padding: 30px 50px 20px;
 }
 
 /* 作品集エリアここまで */
